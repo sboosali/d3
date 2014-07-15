@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+</head>
+<body>
+    <div id="viz"></div>
+    <script type="text/javascript">
+
+    var svg = d3.select("#viz")
+        .append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+    var data = [10, 40, 90, 160, 250, 360];
+    var circle = svg.selectAll("circle").data(data); // update
+    var enter = circle.enter().append("circle");     // enter
+    var exit = circle.exit();                        // exit
+    enter
+        .attr("cy", 90)
+        .attr("cx", String)
+        .attr("r", Math.sqrt);
+
+    enter
+         .transition()
+         .delay(1000)
+         .duration(10000)
+         .style("fill", "white");
+
+
+        var matrix = [
+            [11975,  5871, 8916, 2868],
+            [ 1951, 10048, 2060, 6171],
+            [ 8010, 16145, 8090, 8045],
+            [ 1013,   990,  940, 6907]
+        ];
+
+var tr = d3.select("body").append("table").selectAll("tr")
+    .data(matrix)
+  .enter().append("tr");
+
+var td = tr.selectAll("td")
+    .data(function(d) { return d; })
+  .enter().append("td")
+    .text(function(d) { return d; });
+
+
+    </script>
+</body>
+</html>

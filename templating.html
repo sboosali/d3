@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+  </head>
+  <body>
+   <script type="text/javascript">
+
+    var list = d3.select('body')
+      .data([0, 1, 2, 3])
+
+    list
+      .enter()
+      .append('div')
+      .text(String);
+
+   </script>
+  </body>
+</html>

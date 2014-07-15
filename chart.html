@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+</head>
+<body>
+    <div id="viz"></div>
+    <script type="text/javascript">
+
+    var W = 500;
+    var H = 500;
+    var svg = d3.select("#viz")
+        .append("svg")
+        .attr("width", W)
+        .attr("height", H);
+
+    var data = [10, 40, 90, 160, 250, 360, 490];
+    var N = data.length;
+    var bar_width = W/N;
+    var bar_space = 0.10;
+    var rectangle = svg.selectAll("rect").data(data); // update
+    var enter = rectangle.enter().append("rect");     // enter
+    var exit = rectangle.exit();                      // exit
+
+        enter
+        .attr("x", function (d,i) {return i * bar_width;})
+        .attr("y", function (d) {return W-d;})
+        .attr("width", bar_width * (1-bar_space))
+        .attr("height", function (d) {return d;});
+
+        enter
+        .attr("text-anchor", "end")
+        .text(String);
+
+        enter
+        .style('fill', 'rgb(256,0,0)');
+
+    </script>
+</body>
+</html>
